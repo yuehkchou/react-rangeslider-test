@@ -10,23 +10,21 @@ class InfoBar extends React.Component {
     this.state = {
       value: 3000
     };
+    this.handleChange = this.handleChange.bind(this);
   }
-  toggle() {
-    this.setState({ show: !this.state.show });
-  }
+
   componentDidMount(){
     const slider = document.getElementById('rangeslider');
     const childNode = document.createElement("div");
     slider.appendChild(childNode)
     childNode.setAttribute('id', 'slidervalue')
     slidervalue.innerHTML = '$' + this.state.value;
-
   }
   componentDidUpdate(){
     slidervalue.innerHTML = '$' + this.state.value;
   }
 
-  handleChange = ( value ) => {
+  handleChange( value ){
     this.setState({
       value: value
     });
