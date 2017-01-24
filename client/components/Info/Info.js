@@ -14,9 +14,10 @@ class InfoBar extends React.Component {
   }
 
   componentDidMount(){
-    const slider = document.getElementById('rangeslider');
+    const slider = document.getElementsByClassName('rangeslider__handle');
     const childNode = document.createElement("div");
-    slider.appendChild(childNode)
+    console.log(slider)
+    slider[0].appendChild(childNode)
     childNode.setAttribute('id', 'slidervalue')
     slidervalue.innerHTML = '$' + this.state.value;
   }
