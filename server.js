@@ -11,11 +11,20 @@ const port = process.env.PORT || 8448;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.static('./dist'));
+app.use(express.static('dist'))
 
-app.use('/', function (req, res){
-  res.sendFile(path.resolve('client/index.html'));
-})
+app.get('bundle.js', function(req, res) {
+  res.sendFile(path.join(__dirname, 'dist/bundle.js'));
+});
+
+app.get('styles/style.css', function(req, res) {
+  res.sendFile(path.join(__dirname, 'dist/styles/styles.css'));
+});
+
+app.get('*', function(req, res) {
+  console.log('req.url', req.url);
+  res.sendFile(path.join(__dirname, 'client/index.html'));
+});
 
 app.listen(port, function(err){
   if(err) throw error;
