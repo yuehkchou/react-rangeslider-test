@@ -3,7 +3,8 @@ module.exports = {
   entry: ['./client/index.js'],
   output: {
     path:'./dist',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   devServer: {
       inline: true,
@@ -14,8 +15,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
-      }
+        exclude: /node_modules/,
+        query: {
+         presets: ['react', 'es2015']
+       }
+      },
+
     ]
   }
 }
