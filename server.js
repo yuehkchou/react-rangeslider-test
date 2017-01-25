@@ -9,13 +9,11 @@ const router = express.Router();
 const port = process.env.PORT || 8448;
 
 app.use(bodyParser.json());
-
-app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('./dist'));
 
-app.use('/', function(req, res){
+app.use('/', function (req, res){
   res.sendFile(path.resolve('client/index.html'));
 })
 
